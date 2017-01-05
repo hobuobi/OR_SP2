@@ -51,6 +51,7 @@ flipflop==1.0
 gevent==1.1.1
 greenlet==0.4.10
 guess-language==0.2
+gunicorn==19.6.0
 h5py==2.6.0
 HeapDict==1.0.0
 idna==2.1
