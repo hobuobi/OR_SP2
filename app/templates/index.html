@@ -10,7 +10,10 @@
 </head>
 
 <body>
-  Nothing here yet!
+  <form method="post" action="{{ url_for('searchResults') }}">
+                  <input type="text" name="searchterm" placeholder="whaddya wanna do" />
+                  <input type="submit" />
+                </form>
 </body>
 
 </html>
