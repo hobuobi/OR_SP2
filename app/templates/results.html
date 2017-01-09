@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block content %}
+  {{ super() }}
+{% endblock %}
+{% block results %}
+  <hr />
+  <h1>Hire {{ top['name']}}. They're {{ pref }}, according to {{ top['reviews']|length }} relevant reviews.</h1>
+  {% for result in top['reviews'] %}
+  <div class="review positive">
+    <p>{{ result['review'] }}</p>
+  </div>
+  {% endfor %}
+  <h2>SUMMARY</h2>
+  <div id="chart"></div>
+  <script>
+  var w = 300,
+  	h = 300;
+
+  var colorscale = d3.scale.category10();
+
+  //Legend titles
+  var LegendOptions = ['Smartphone','Tablet'];
+
+  //Data
+  var d = [
+  		  [
+  			{axis:"FRIENDLINESS",value:{{ top['avgFrnd'] }} },
+        {axis:"QUALITY",value: {{ top['avgQual'] }} },
+        {axis:"COMMUNICATION",value: {{ top['avgComm'] }} },
+  			{axis:"TIMELINESS",value: {{ top['avgTime'] }} },
+  		  ]
+  		];
+
+  //Options for the Radar chart, other than default
+  var mycfg = {
+    w: w,
+    h: h,
+    maxValue: 0.5,
+    levels: 4,
+    ExtraWidthX: 200
+  }
+
+  //Call function to draw the Radar chart
+  //Will expect that data is in %'s
+  RadarChart.draw("#chart", d, mycfg);
+  </script>
+{% endblock %}

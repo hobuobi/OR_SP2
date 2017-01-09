@@ -19,5 +19,4 @@ def analyze(str):
         senti = json.loads(data.decode("utf-8"))
         return senti['documents'][0]['score'] # returns the score of the input
     except Exception as e:
-        print(str)
-        print(e)
+        print('err: ',str)

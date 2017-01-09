@@ -1,0 +1,125 @@
+body {
+  background-color: #FFF;
+
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: Poppins, sans-serif;
+  color: #2E3192;
+  font-weight: 700;
+}
+h1{
+  font-size: 2em;
+}
+p {
+  font-family: Open Sans, sans-serif;
+  font-weight: 300;
+}
+#main-wrapper {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+#main{
+  display: inline-block;
+  position: relative;
+  padding: 50px;
+  width: 700px;
+}
+#main h1{
+  font-size: 3em;
+  margin-bottom: 5px;
+}
+#main input[type='text']{
+  border: none;
+  border-bottom: solid #2E3192 5px;
+  background-color: none;
+  padding: 10px;
+  color: #999;
+  font-family: Open Sans, sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  width: 100%;
+  transition: 0.4s;
+}
+#main input[type='text']:focus {
+  outline: none;
+  color: #333;
+}
+#submit < div {
+  width: 100%;
+}
+#submit {
+  margin-top: 10px;
+  outline: none;
+  float: right;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #999;
+  background-color: transparent;
+  border: none;
+  border-top: solid #999 5px;
+  transition: 0.2s;
+}
+#submit:hover{
+  cursor: pointer;
+  color: #48EF97;
+  border-top: none;
+  border-bottom: solid #48EF97 5px;
+  transform: translateY(5px);
+}
+#results {
+  margin-top: 100px;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0px 0px 30px #AAA;
+  display: none;
+  overflow-y: auto;
+}
+#results h1{
+  font-size: 1.5em;
+  line-height: normal;
+}
+.positive h3{
+  color: #48EF97;
+}
+.negative h3 {
+  color: #F49C90;
+}
+
+#selectors {
+  display: inline-block;
+  height: 70px;
+  margin: 10px 0px 10px 0px;
+}
+
+#selectors div {
+  display: inline-block;
+  padding: 10px;
+  margin: 0px 5px 0px 5px;
+  background-color: none;
+  border: solid 5px lightgrey;
+
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: lightgrey;
+  transition: 0.4s;
+  cursor: pointer;
+}
+#selectors div:hover{
+  color: #48EF97;
+  border-color: #48EF97;
+}
+#selectors input[type='checkbox']{
+  position: absolute;
+  top: -999%;
+  right: -999%;
+  visibility: hidden;
+}
+#selectors input[type='checkbox']:checked + label > div{
+  color: #48EF97;
+  border-color: #48EF97;
+}

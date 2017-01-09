@@ -1,19 +1,20 @@
-<DOCTYPE! html>
+{% extends "base.html" %}
+  {% block content %}
+  <div id="query">
+    <h1>So, what's the situation?</h1>
+    <form method="post" action="{{ url_for('searchResults') }}">
+      <input id="search" type="text" name="search" placeholder="I need someone to fix the lights in my kitchen as soon as humanely possible."></input>
+      <div id="selectors" align="center">
+        <input type="checkbox" name="timely" id="timely" value="timely"><label for="timely"><div>TIMELY</div></label>
+        <input type="checkbox" name="friendly" id="friendly" value="friendly"><label for="friendly"><div>FRIENDLY</div></label>
+        <input type="checkbox" name="communicative" id="communicative" value="communicative"><label for="communicative"><div>COMMUNICATIVE</div></label>
+        <input type="checkbox" name="quality" id="quality" value="thorough"><label for="quality"><div>THOROUGH</div></label>
+      </div>
+      <div>
+      <button type="submit" id="submit" type="button">FIND ME SOMEONE</button>
+      </div>
 
-<head>
-  <title>OR SPRINT 2 TESTING -- {{ name }}</title>
-
-  <!-- CSS -->
-
-  <!-- JS -->
-
-</head>
-
-<body>
-  <form method="post" action="{{ url_for('searchResults') }}">
-                  <input type="text" name="searchterm" placeholder="whaddya wanna do" />
-                  <input type="submit" />
-                </form>
-</body>
-
-</html>
+    </form>
+  </div>
+  {% block results %}{% endblock %}
+  {% endblock %}
