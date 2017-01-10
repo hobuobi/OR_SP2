@@ -1,5 +1,5 @@
 electrician = ['electrician','lights','wiring','socket','power','flickering','flicker','circuit']
-plumber = ['plumber','faucet', 'pipe', 'toilet', 'plumbing','leak']
+plumber = ['plumber','fridge','faucet', 'pipe', 'toilet', 'plumbing','leak']
 time = ['timely', 'fast', 'quick', 'wait','slow','time','arrived','arrive','come','go','went','going','reliable','wait','efficient','within','convenient']
 friendly = ['friendly','talked','nice','enjoy','enjoyable','talk','chat','went over','helped','help']
 communicative = ['talked','talk','phone','call','called','email','promised','promise','say','said','saying','explain','chat']

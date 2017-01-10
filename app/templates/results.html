@@ -5,10 +5,11 @@
 {% endblock %}
 {% block results %}
   <hr />
-  <h1>Hire {{ top['name']}}. They're {{ pref }}, according to {{ top['reviews']|length }} relevant reviews.</h1>
-  {% for result in top['reviews'] %}
-  <div class="review positive">
-    <p>{{ result['review'] }}</p>
+  <h2><a id="result-ref" href="tel:{{ top['phone'] }}">Hire {{ top['name']}}.</a></h2>
+  <h3>They're {{ pref }}, according to {{ top['reviews']|length }} relevant reviews.</h1>
+  {% for result in top['reviews'][:5] %}</h3>
+  <div class="review">
+    <p>"{{ result['review'] }}"</p>
   </div>
   {% endfor %}
   <h2>SUMMARY</h2>
@@ -29,7 +30,13 @@
         {axis:"QUALITY",value: {{ top['avgQual'] }} },
         {axis:"COMMUNICATION",value: {{ top['avgComm'] }} },
   			{axis:"TIMELINESS",value: {{ top['avgTime'] }} },
-  		  ]
+      ],
+      [
+      {axis:"FRIENDLINESS",value:{{ averages['avgFrnd'] }} },
+      {axis:"QUALITY",value: {{ averages['avgQual'] }} },
+      {axis:"COMMUNICATION",value: {{ averages['avgComm'] }} },
+      {axis:"TIMELINESS",value: {{ averages['avgTime'] }} },
+    ]
   		];
 
   //Options for the Radar chart, other than default

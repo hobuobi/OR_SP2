@@ -10,6 +10,9 @@ $(document).ready(function(){
   $("#search").keyup(function(){
     detectPreference($(this).val());
   })
+  $("#submit").click(function(){
+    $("#loader").fadeIn(300);
+  })
   function detectPreference(str){
     arr = {
       'timely': match(str,time),

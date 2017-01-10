@@ -16,4 +16,4 @@ def scrape10(url):
     reviews = tree.xpath("//div[@class='review-content']/p/text()")
     for rev in reviews:
         results.append(rev)
-    return results[:10]
+    return results[:20]

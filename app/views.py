@@ -28,10 +28,10 @@ def index():
 @app.route('/results/', methods=['POST'])
 def searchResults():
     preferences = {
-        'timely' : True if request.form.get('timely') is not None else False,
-        'communicative' : True if request.form.get('communicative') is not None else False,
-        'quality' : True if request.form.get('quality') is not None else False,
-        'friendly' : True if request.form.get('friendly') is not None else False
+        'timely' : 'avgTime' if request.form.get('timely') is not None else False,
+        'communicative' : 'avgComm' if request.form.get('communicative') is not None else False,
+        'quality' : 'avgQual' if request.form.get('quality') is not None else False,
+        'friendly' : 'avgFrnd' if request.form.get('friendly') is not None else False
     }
     prefAdj = [request.form.get('timely'),request.form.get('communicative'),request.form.get('quality'),request.form.get('friendly')]
     search=request.form['search']
@@ -43,7 +43,7 @@ def searchResults():
     businesses = response.businesses
     reviews = []
     allBiz = []
-    for biz in businesses[:1]:
+    for biz in businesses[:10]:
         reviews = []
         for rev in scraper.scrape10(biz.url):
             flatten = lambda l: [item for sublist in l for item in sublist]
@@ -60,6 +60,7 @@ def searchResults():
         print(reviews)
         allBiz.append({
             'name' : biz.name,
+            'number' : biz.phone,
             'reviews' : reviews,
             'avgSent': sentimentAvg(reviews,'sentiment'),
             'avgTime': sentimentAvg(reviews,'timely'),
@@ -67,10 +68,31 @@ def searchResults():
             'avgQual': sentimentAvg(reviews,'quality'),
             'avgFrnd': sentimentAvg(reviews,'friendly')
         })
-    sortedBiz = sorted(allBiz, key= lambda biz: biz['avgSent'], reverse=True)
+    pref_prime = 'avgSent'
+    for pr,val in preferences.items():
+        if(val is not False):
+            pref_prime = val
+            break
+    averages = {
+        'avgTime': 0,
+        'avgComm': 0,
+        'avgQual': 0,
+        'avgFrnd': 0
+    }
+    for biz in allBiz:
+        total = 0
+        averages['avgTime'] += biz['avgTime']
+        averages['avgComm'] += biz['avgComm']
+        averages['avgQual'] += biz['avgQual']
+        averages['avgFrnd'] += biz['avgFrnd']
+    averages['avgTime'] /= len(allBiz)
+    averages['avgComm'] /= len(allBiz)
+    averages['avgQual'] /= len(allBiz)
+    averages['avgFrnd'] /= len(allBiz)
+    sortedBiz = sorted(allBiz, key= lambda biz: biz[pref_prime], reverse=True)
     topBiz = sortedBiz[0]
     pref = '/'.join([x for x in prefAdj if x is not None])
-    return render_template('results.html', term=term,results=allBiz,top=topBiz,pref=pref)
+    return render_template('results.html', term=term,results=allBiz,top=topBiz,pref=pref,averages=averages)
 def sentimentAvg(sent,filt):
     total = 0
     count = 0
@@ -78,4 +100,7 @@ def sentimentAvg(sent,filt):
         if x[filt] is not None:
             total = total+x[filt]
             count = count+1
-    return total/len(sent)
+    if total == 0:
+        return 0
+    else:
+        return total/count

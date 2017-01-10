@@ -14,9 +14,27 @@ p {
   font-family: Open Sans, sans-serif;
   font-weight: 300;
 }
+a#result-ref {
+  color: #2E3192;
+}
+a:visited {
+  color: #3FABD1;
+}
+
+#header {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: #EEE;
+  padding: 20px;
+}
+#header img{
+  height: 100%;
+}
 #main-wrapper {
   position: absolute;
-  top: 0%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -25,7 +43,7 @@ p {
   display: inline-block;
   position: relative;
   padding: 50px;
-  width: 700px;
+  width: 750px;
 }
 #main h1{
   font-size: 3em;
@@ -47,8 +65,9 @@ p {
   outline: none;
   color: #333;
 }
-#submit < div {
+div#submit-wrapper {
   width: 100%;
+  height: 70px;
 }
 #submit {
   margin-top: 10px;
@@ -81,6 +100,10 @@ p {
 #results h1{
   font-size: 1.5em;
   line-height: normal;
+}
+.review p{
+  font-family: Roboto Slab, sans-serif;
+  font-weight: 300;
 }
 .positive h3{
   color: #48EF97;
@@ -123,3 +146,18 @@ p {
   color: #48EF97;
   border-color: #48EF97;
 }
+
+#loader {
+  width: 100%;
+  display: none;
+}
+#loader img {
+  height: 200px;
+  -webkit-animation:spin 1.5s linear infinite;
+  -moz-animation:spin 1.5s linear infinite;
+  animation:spin 1.5s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
