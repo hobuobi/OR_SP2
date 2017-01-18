@@ -13,3 +13,4 @@ sqlparse==0.2.2
 w3lib==1.16.0
 Werkzeug==0.11.11
 yelp==1.0.2
+boto==2.45.0
