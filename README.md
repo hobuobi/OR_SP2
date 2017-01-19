@@ -5,7 +5,9 @@ This is a project created from insights developed at the IDEO CoLab, around the 
 
 #### To run: 
 
-1) Clone the repository using the address provided. 
+Make sure you have [Python 3.5](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installing/) installed. 
+
+1) Clone the repository using the address provided, then run `pip install -r requirements.txt`.
 
 2) Get a Yelp API key by registering your clone of the application [here.](https://www.yelp.com/developers/documentation/v2/overview)
 
